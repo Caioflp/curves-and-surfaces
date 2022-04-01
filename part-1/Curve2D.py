@@ -13,8 +13,8 @@ class Curve2D():
         self.t_sym = t * speed
 
         # Parametrized Vector
-        self.x_sym = vector_sym[0] * scale + offset[0]
-        self.y_sym = vector_sym[1] * scale + offset[1]
+        self.x_sym = vector_sym[0].subs(t, self.t_sym) * scale + offset[0]
+        self.y_sym = vector_sym[1].subs(t, self.t_sym) * scale + offset[1]
 
         # Velocity
         self.dx_sym = sp.diff(self.x_sym)
@@ -93,7 +93,7 @@ class Curve2D():
 
 
         # Acceleration label
-        self.acceleration_name_m = MathTex("\\" + name + r"^{\prime}").scale(.75)
+        self.acceleration_name_m = MathTex("\\" + name + r"^{\prime\prime}").scale(.75)
 
         def acceleration_name_m_updater(acceleration_name_m):
             t = self.time_m.get_value()
