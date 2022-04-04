@@ -51,9 +51,6 @@ class Curve3D():
         ## Vector updaters SHOULD NOT HAVE TO BE HERE
         def time_m_updater(time_m, dt):
             time_m.increment_value(dt)
-            self.velocity_m.update()
-            self.normal_m.update()
-            self.binormal_m.update()
 
         self.time_m.add_updater(time_m_updater)
 
@@ -77,7 +74,8 @@ class Curve3D():
             t = self.time_m.get_value()
             start = self.dot_m.get_center()
             end = start + self.velocity(t)
-            velocity_m.set_start_and_end_attrs(start, end)
+            # velocity_m.set_start_and_end_attrs(start, end)
+            velocity_m.become(Arrow3D(start=start, end=end, color=color))
 
         self.velocity_m.add_updater(velocity_m_updater)
 
@@ -91,7 +89,8 @@ class Curve3D():
             t = self.time_m.get_value()
             start = self.dot_m.get_center()
             end = start + self.acceleration(t)
-            acceleration_m.set_start_and_end_attrs(start, end)
+            # acceleration_m.set_start_and_end_attrs(start, end)
+            acceleration_m.become(Arrow3D(start=start, end=end, color=color))
 
         self.acceleration_m.add_updater(acceleration_m_updater)
 
@@ -105,7 +104,8 @@ class Curve3D():
             t = self.time_m.get_value()
             start = self.dot_m.get_center()
             end = start + self.normal(t)
-            normal_m.set_start_and_end_attrs(start, end)
+            # normal_m.set_start_and_end_attrs(start, end)
+            normal_m.become(Arrow3D(start=start, end=end, color=color))
 
         self.normal_m.add_updater(normal_m_updater)
 
@@ -119,7 +119,8 @@ class Curve3D():
             t = self.time_m.get_value()
             start = self.dot_m.get_center()
             end = start + self.binormal(t)
-            binormal_m.set_start_and_end_attrs(start, end)
+            # binormal_m.set_start_and_end_attrs(start, end)
+            binormal_m.become(Arrow3D(start=start, end=end, color=color))
 
         self.binormal_m.add_updater(binormal_m_updater)
 
