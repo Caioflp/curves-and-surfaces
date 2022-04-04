@@ -47,8 +47,6 @@ class Curve3D():
         #        the start of the animation
         self.time_m = ValueTracker(init_t)
 
-        ## TEMPORARY SOLUTION
-        ## Vector updaters SHOULD NOT HAVE TO BE HERE
         def time_m_updater(time_m, dt):
             time_m.increment_value(dt)
 
