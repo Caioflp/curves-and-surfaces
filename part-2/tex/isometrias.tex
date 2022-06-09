@@ -1,0 +1,43 @@
+\section{Isometrias}
+
+Quando estamos trabalhando com aplicações de \( \R^{ n } \) em \( \R^{ m } \), isometrias são aquelas que preservam o comprimento de vetores.
+Ao mudar o ambiente de trabalho para superfícies, a definição de isometria faz referência à derivada da aplição e, consequentemente, aos espaços tangentes a essas superfícies.
+Mais explicitamente, temos:
+\begin{defn}[Isometria]
+    Dadas superfícies regulares \( S_{ 1 } \) e \( S_{ 2 } \), dizemos que uma aplicação \( f : S_{ 1 } \to S_{ 2 } \) é uma \emph{isometria} se é um difeomorfismo e, para todo \( p \in S_{ 1 } \) e todos \( w, v \in T_{ p } S_{ 1 } \) temos
+    \begin{equation}
+        \dotprod{ df_{ p } w, df_{ p } v } = \dotprod{ w, v }
+        \label{eq: isometria}
+    .\end{equation}
+    Ainda, dizemos que \( f : S_{ 1 } \to S_{ 2 } \) é uma \emph{isometria local} se, para todo \( p \in S_{ 1 } \) existem abertos \( V_{ 1 } \subseteq S_{ 1 } \) e \( V_{ 2 } \subseteq V_{ 2 } \), tais que \( p \in V_{ 1 }, f ( p ) \in V_{ 2 } \) e \( f \mid_{ V_{ 1 } } : V_{ 1 } \to V_{ 2 } \) é uma isometria.
+
+Finalmente, duas superfícies regulares são ditas \emph{isométricas} se existe uma isometria entre elas.
+\end{defn}
+
+Agora, alguns comentários.
+Observe que, se \( f \) é isometria local e difeomorfismo, então é isometria.
+Também perceba que, pela \emph{identidade de polarização}:
+\begin{equation*}
+    \dotprod{ w, v } = \frac{ \norm{ w + v }^2 - \norm{ w - v }^2 }{ 4 }
+\end{equation*}
+a condição (\ref{eq: isometria}) é equivalente a termos
+\begin{equation}
+    \norm{ df_{ p }w } = \norm{ w }
+    \label{eq: isometria2}
+\end{equation}
+para todo \( w \in T_{ p } S_{ 1 } \).
+
+Observe, ainda, que se \( f : S_{ 1 } \to S_{ 2 } \) cumpre (\ref{eq: isometria2}) (ou, equivalentemente, (\ref{eq: isometria}), pelo que acabamos de mostrar), então, para todo \( p \in S_{ 1 } \), temos que \( df_{ p } \) é um isomorfismo.
+De fato, a injetividade vem do fato de que se \( df_{ p }w = df_{ p }v \), então
+\begin{equation*}
+    \norm{ w - v } = \norm{ df_{ p } ( w - v ) } = \norm{ df_{ p }w - df_{ p }v } = 0
+,\end{equation*}
+de modo que \( w = v \).
+Agora, como \( 2 = \dim T_{ f ( p ) } S_{ 2 } \geq \dim df_{ p } ( T_{ p } S_{ 1 } ) = 2 \), necessariamente temos \( T_{ f ( p ) } S_{ 2 } = df_{ p } ( T_{ p } S_{ 1 } ) \), ou seja, \( df_{ p } \) é sobrejetiva.
+Dessa forma, pelo Teorema da Função Inversa, para cada \( p \in S_{ 1 } \) existem vizinhanças \( V_{ 1 } \ni p \) e \( V_{ 2 } \ni f ( p ) \) em \( S_{ 1 } \) e \( S_{ 2 } \), respectivamente, tais que \( f\mid_{ V_{ 1 } } : V_{ 1 } \to V_{ 2 } \) é difeomorfismo.
+Ou seja, \( f \) é isometria local.
+
+Com isso, provamos a seguinte proposição, que caracteriza as isometrias locais.
+\begin{prop}
+    Uma aplicação entre superfícies regulares é uma isometria local se, e somente se, preserva a primeira forma fundamental.
+\end{prop}

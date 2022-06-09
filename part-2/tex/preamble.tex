@@ -1,0 +1,59 @@
+%% Packages
+
+\usepackage{mathtools, amsthm}
+% \usepackage{tikz}
+% \usetikzlibrary{positioning}
+% \usepackage{csquotes}
+% \usepackage{hyperref}
+
+%% Environments
+
+\theoremstyle{plain} % default
+\newtheorem{teo}{Teorema}[section]
+\newtheorem*{teo*}{Teorema}
+\newtheorem{lem}{Lema}[section]
+\newtheorem*{lem*}{Lema}
+\newtheorem{prop}{Proposição}
+\newtheorem*{prop*}{Proposição}
+\newtheorem{cor}[teo]{Corolário}
+\newtheorem*{axiom}{Axioma}
+
+\newtheorem*{TAU}{Teorema da Aproximação Universal}
+\newtheorem*{Riesz}{Teorema da Representação de Riesz}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definição}
+\newtheorem{conj}{Conjectura}[section]
+\newtheorem{exmp}{Exemplo}[section]
+\newtheorem{rem}{Observação}[section]
+\newtheorem*{rem*}{Observação}
+
+\theoremstyle{remark}
+\newtheorem*{note}{Nota}
+\newtheorem{case}{Caso}
+
+
+% Macros
+
+
+\DeclarePairedDelimiter{\dotprod}{\langle}{\rangle}
+
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\intt}{int}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rref}{rref}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\lin}{Lin}
+\DeclareMathOperator{\supp}{supp}
+
+\DeclareMathOperator{\posto}{posto}
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+
+\newcommand{\transpose}{\mathsf{T}}
+
+%% Multiline comments
+\newcommand{\comment}[1]{}
