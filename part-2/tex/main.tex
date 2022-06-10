@@ -2,10 +2,23 @@
 
 \usepackage{exercise-sheet}
 \usepackage{global-macros}
+\usepackage{biblatex}
+\usepackage{csquotes}
+\addbibresource{../bib/bibliografia.bib}
+\usepackage{graphicx}
+\graphicspath{{../fig/}}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdfpagemode=FullScreen,
+}
 
 \input{preamble}
 
-\title{Um estudo sobre as curvas \emph{Geodésicas}}
+\title{Um estudo elementar sobre as curvas \emph{Geodésicas}}
 \author{Caio Lins}
 \date{\today}
 
@@ -13,14 +26,14 @@
 
 \maketitle
 
+\tableofcontents
 
-%% Colocar abstract
-%% Colocar texto corrido entre definições e demonstrações
-%% Colocar apendice ou seção de preliminares enunciando resultados e
-%  definições necessárias pro texto
-
+\input{introducao}
 \input{isometrias}
 \input{geodesicas}
-\input{exponencial}
+\input{exemplos}
+\input{conclusao}
+
+\printbibliography
 
 \end{document}

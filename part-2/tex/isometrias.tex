@@ -41,3 +41,39 @@ Com isso, provamos a seguinte proposição, que caracteriza as isometrias locais
 \begin{prop}
     Uma aplicação entre superfícies regulares é uma isometria local se, e somente se, preserva a primeira forma fundamental.
 \end{prop}
+
+Dado esse resultado, podemos esperar que isometrias locais preservem, de uma certa forma, os coeficientes da primeira forma fundamental.
+Isso de fato ocorre, como podemos ver na seguinte proposição:
+
+\begin{prop}
+    Sejam \( S_{ 1 } \) e \( S_{ 2 } \) superfícies regulares, \( f : S_{ 1 } \to S_{ 2 } \) uma isometria local e \( X : U \subseteq \R^{ 2 } \to S_{ 1 } \) uma parametrização local de \( S_{ 1 } \), cuja imagem \( X ( U ) \defeq V \) é um aberto de \( S_{ 1 } \) tal que \( f \mid_{ V } : V \to f ( V ) \subseteq S_{ 2 } \) é uma isometria.
+    Sob essas hipóteses, \( Y = f \circ X : U \to S^{ 2 } \) é uma parametrização local de \( S_{ 2 } \), cujos coeficientes da primeira forma fundamental coincidem com aqueles da parametrização \( X \).
+    \label{conserva primeira forma}
+\end{prop}
+
+\begin{proof}
+    Como a composição de difeomorfismos é um difeomorfismo e tanto \( f \mid_{ V } \) quanto \( X \) são difeomorfismos, temos que \( Y \) é uma parametrização local de \( S_{ 2 } \).
+    Além disso, como a restrição de \( f \) a \( V \) é uma isometria, temos, para todo \( ( u, v ) \in U \):
+    \begin{align*}
+        \dotprod{ Y_{ u } ( u, v ), Y_{ u } ( u, v ) }
+        &= \dotprod{
+            ( f \circ X )_{ u } ( u, v ),
+            ( f \circ X )_{ u } ( u, v )
+        } \\
+        &= \dotprod{
+            df_{ X ( u, v ) } X_{ u } ( u, v ),
+            df_{ X ( u, v ) } X_{ u } ( u, v )
+        } \\
+        &= \dotprod{ 
+            X_{ u } ( u, v ), X_{ u } ( u, v )
+        }
+    .\end{align*}
+    Ou seja, o coeficiente \( E \) da primeira forma fundamental é preservado.
+    Analogamente demonstra-se que
+    \begin{equation*}
+        \dotprod{ Y_{ u }, Y_{ v } } = \dotprod{ X_{ u }, X_{ v } }
+        \ \text{ e } \
+        \dotprod{ Y_{ v }, Y_{ v } } = \dotprod{ X_{ v }, X_{ v } }
+    .\end{equation*}
+    Com isso, todos os coeficientes da primeira forma fundamental são preservados, como queríamos demonstrar.
+\end{proof}

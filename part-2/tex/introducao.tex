@@ -1,0 +1,29 @@
+\section{Introdução}
+
+Neste trabalho, vamos definir o conceito de geodésica e estudar suas propriedades mais elementares, culminando com a demonstração de sua existência e unicidade.
+A exposição foi integralmente baseada no capítulo 4 de \cite{ronaldo}.
+Apesar de não chegarmos a abordar esta parte, é importante enfatizar que o interesse sobre geodésicas vem do fato de que, \emph{localmente}, elas minimizam o comprimento de caminhos entre pontos na superfície.
+Isso poderá ser visualizado quando mostrarmos alguns exemplos de geodésicas.
+Antes de tudo, porém, vamos apenas revisar um pouco da notação, bem como um teorema, que serão utilizados.
+
+Denotamos o produto vetorial entre dois vetores \( v, w \in \R^{ 3 } \) por \( v \times w \).
+A esfera unitária em \( \R^{ 3 } \), isto é, o conjunto \( ( x, y, z ) \in \R^{ 3 } : x^2 + y^2 + z^2 = 1 \) será denotada por \( \mathbb{S}^2 \).
+Quando escrevermos, por exemplo, \( t \mapsto t^2 \), estaremos fazendo referência à \emph{função} que mapeia um número \( t \) ao número \( t^2 \).
+Além disso, dada uma função \( f \), a notação \( f \equiv 0 \) significa que \( f \) é \emph{identicamente nula}, ou seja, \( f ( x ) = 0 \) para todo \( x \) no domínio de \( f \).
+Por fim, relembramos o enunciado do teorema que garante a existência e unicidade das soluções de uma equação diferencial ordinária:
+\begin{teo*}
+    Seja \( D \subseteq \R \times \R^{ n } \) um retângulo fechado com \( ( t_{ 0 }, u_{ 0 } ) \in D \).
+    Seja \( f : D \to \R^{ n } \) uma função contínua em \( t \) e Lipschitz contínua em \( y \).
+    Então, existe \( \varepsilon > 0 \) tal que a equação
+    \begin{equation*}
+        y' ( t ) = f ( t, y ( t ) )
+    ,\end{equation*}
+    junto com a restrição \( y ( t_{ 0 } ) = y_{ 0 } \) tem uma solução única no intervalo \( ( t_{ 0 } - \varepsilon, t_{ 0 } + \varepsilon ) \).
+\end{teo*}
+
+
+%% \( \times \)
+%% \( \mathbb{S}^{ n } \)
+%% EG - F^2 > 0
+%% \( x \mapsto f ( x ) \)
+%% \( f \equiv 0 \)

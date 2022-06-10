@@ -1,0 +1,59 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{ronaldo}{book}{}
+      \name{author}{1}{}{%
+        {{hash=393a3e10c85ba24262d936bd660c3fc7}{%
+           family={Lima},
+           familyi={L\bibinitperiod},
+           given={Ronaldo\bibnamedelima Freire},
+           giveni={R\bibinitperiod\bibinitdelim F\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Sociedade Brasileira de Matemática}%
+      }
+      \strng{namehash}{393a3e10c85ba24262d936bd660c3fc7}
+      \strng{fullhash}{393a3e10c85ba24262d936bd660c3fc7}
+      \strng{bibnamehash}{393a3e10c85ba24262d936bd660c3fc7}
+      \strng{authorbibnamehash}{393a3e10c85ba24262d936bd660c3fc7}
+      \strng{authornamehash}{393a3e10c85ba24262d936bd660c3fc7}
+      \strng{authorfullhash}{393a3e10c85ba24262d936bd660c3fc7}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{$1^a$ edição}
+      \field{series}{Colóquios Brasileiros de Matemática das Regiões: Região Norte}
+      \field{title}{Introdução à Geometria Diferencial}
+      \field{year}{2016}
+      \verb{urlraw}
+      \verb https://www.ronaldofreiredelima.com/introdução-à-geometria-diferencial
+      \endverb
+      \verb{url}
+      \verb https://www.ronaldofreiredelima.com/introdu%C3%A7%C3%A3o-%C3%A0-geometria-diferencial
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

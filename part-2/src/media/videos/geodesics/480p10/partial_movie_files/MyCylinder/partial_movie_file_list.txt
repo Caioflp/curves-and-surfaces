@@ -1,0 +1,2 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/caiolins/fgv/5-periodo/curves-and-surfaces/curves-and-surfaces/part-2/src/media/videos/geodesics/480p10/partial_movie_files/MyCylinder/3610227426_1487742170_138501317.mp4'

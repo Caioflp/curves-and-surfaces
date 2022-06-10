@@ -3,15 +3,242 @@
 \begin{defn}
     Uma curva parametrizada diferenciável em uma superfície regular \( S \), \( \gamma : I \subseteq \R \to S \), é dita uma \emph{geodésica parametrizada} se seu vetor aceleração é sempre perpendicular ao espaço tangente da superfície, ou seja, se para todo \( p = \gamma ( t ) \in \gamma ( I ) \) temos \( \gamma'' ( t ) \in \left\{ T_{ \gamma ( t ) } S \right\}^{ \perp } \).
     Analogamente, uma curva regular \( C \subset S \) é dita uma \emph{geodésica} de \( S \) se, para todo ponto \( p \in C \), existe uma parametrização local \( \gamma : I \subseteq \R \to C \), de \( C \) em \( p \), tal que \( \gamma \) é uma geodésica parametrizada.
-
-\comment{
-    norma do vetor velocidade da geodesica é constante
-    caracterização com produto interno da aceleracao e a normal de gauss *
-    equacoes diferenciais
-    existencia e unicidade *
-    invariancia por isometrias locais
-    homogeneidade
-}
-    
 \end{defn}
 
+Ressaltamos que, por uma questão de economia, por vezes nos referiremos a geométricas parametrizadas apenas como geodésicas.
+
+A seguir, algumas propriedades fundamentais das curvas geodésicas:
+\begin{prop}
+    A norma do vetor velocidade de toda geodésica parametrizada é uma função constante.
+    \label{geonorm}
+\end{prop}
+\begin{proof}
+    Seja \( \gamma : I \subseteq \R \to S \) uma geodésica parametrizada.
+    De fato, como \( \norm{ \gamma' ( t ) }^2 = \dotprod{ \gamma' ( t ), \gamma' ( t ) } \) para todo \( t \in I \), derivando essa função com relação a \( t \) obtemos
+    \begin{equation*}
+        \frac{ \mathrm d }{ \mathrm d t } \norm{ \gamma ( t ) }^2
+        = 2 \dotprod{ \gamma' ( t ), \gamma'' ( t ) } = 0
+    ,\end{equation*}
+    para todo \( t \in I \), pois, por definição, \( \gamma' ( t ) \in T_{ \gamma ( t ) } S \) e \( \gamma'' ( t ) \in \left\{ T_{ \gamma ( t ) } S \right\}^{ \perp } \).
+    Assim, \( \norm{ \gamma ( t ) }^2 \) (e, portanto, \( \norm{ \gamma ( t ) } \)) é constante.
+\end{proof}
+
+É interessante perceber que essa proposição implica em toda curva geodésica parametrizada ser ou uma curva regular (caso \( \norm{ \gamma' ( t ) } \neq 0 \)) ou uma função constante (caso \( \norm{ \gamma' ( t ) } = 0 \)).
+A próxima proposição mostra qual condição deve ser imposta sobre uma curva com velocidade constante em norma para que valha a volta.
+
+\begin{prop}[Caracterização das Geodésicas]
+    Sejam \( N : S \to \mathbb{S}^{ 2 } \) uma aplicação normal de gauss de uma superfície regular orientável \( S \) e \( \gamma : I \subseteq \R \to S \) uma curva diferenciável, cujo vetor velocidade tem norma constante.
+    Então \( \gamma \) é uma geodésica se, e somente se,
+    \begin{equation}
+        \dotprod{ \gamma'' ( t ), ( N \circ \gamma ) ( t ) \times \gamma' ( t ) } = 0
+        \label{carac geod}
+    \end{equation}
+    para todo \( t \in I \).
+\end{prop}
+\begin{proof}
+    Supondo que \( \gamma \) é, de fato, geodésica, veja que, como \( \dim T_{ p } S = 2 \) para todo \( p \in S \), a dimensão de \( \left\{ T_{ p } S \right\}^{ \perp } \) é \( 1 \).
+    Logo, \( \gamma'' ( t ) \) é paralelo a \( ( N \circ \gamma ) ( t ) \) para todo \( t \in I \), pois ambos pertencem a \( \left\{ T_{ p } S \right\}^{ \perp } \).
+    Assim, como \( ( N \circ \gamma ) ( t ) \times \gamma' ( t ) \) é perpendicular a \( ( N \circ \gamma ) ( t ) \), também é a \( \gamma'' ( t ) \).
+
+    De maneira recíproca, suponha que valha (\ref{carac geod}) para todo \( t \in I \).
+    A hipótese de \( t \mapsto \norm{ \gamma' ( t ) } \) ser uma função constante nos restringe a duas possibilidades.
+    Caso \( \gamma' \equiv 0 \), temos que \( \gamma \) é uma função constante, de modo que é geodésica, como pode-se facilmente verificar.
+    Caso \( \gamma' ( t ) \neq 0 \) para todo \( t \), vamos mostrar a intuição por trás da condição (\ref{carac geod}).
+    Veja que o conjunto \( \left\{ \gamma' ( t ), ( N \circ \gamma ) ( t ), ( N \circ \gamma ) ( t ) \times \gamma' ( t ) \right\} \) forma uma base ortogonal de \( \R^{ 3 } \), pois, por definição, cada um de seus elementos é ortogonal aos outros dois.
+    Agora, perceba se queremos que \( \gamma'' ( t ) \) seja paralelo a \( ( N \circ \gamma ) ( t ) \) e, portanto, uma geodésica, basta que ele seja ortogonal aos outros dois elementos da base de \( \R^{ 3 } \) que apresentamos!
+    A ortogonalidade a \( \gamma' ( t ) \) já temos, pelo mesmo argumento empregado na demonstração da Proposição \ref{geonorm}, devido à norma constante de \( \gamma' \), e a ortogonalidade a \( ( N \circ \gamma ) ( t ) \times \gamma' ( t ) \) é tomada como hipótese!
+    Com isso, terminamos a prova.
+\end{proof}
+
+Nosso objetivo a seguir será demonstrar que geodésicas de fato existem e são únicas a partir de um ponto e numa dada direção e, além disso, sua invariância por isometrias locais.
+Para tanto, suporemos dados uma superfície regular orientável \( S \), sobre a qual temos uma aplicação normal de Gauss \( N : S \to \mathbb{S}^{ 2 } \) e uma parametrização local \( X : U \subseteq \R^{ 2 } \to S \).
+Com isso, para cada \( ( u, v ) \in U \ \) temos uma base de \( \R^{ 3 } \) dada por \( \left\{ X_{ u } ( u, v ), X_{ v } ( u, v ), ( N \circ X ) ( u, v ) \right\} \).
+
+Dessa forma, podemos representar as funções vetoriais \( X_{ uu }, X_{ vv }, X_{ uv } \) como combinações lineares dessas bases.
+Aos coeficientes dessas combinações damos nomes específicos, como explicitamos a seguir:
+\begin{equation}
+    \begin{cases}
+        X_{ uu } = \Gamma_{ 11 }^{ 1 } X_{ u } + \Gamma_{ 11 }^{ 2 } X_{ v } + aN \\
+        X_{ uv } = \Gamma_{ 12 }^{ 1 } X_{ u } + \Gamma_{ 12 }^{ 2 } X_{ v } + bN \\
+        X_{ vv } = \Gamma_{ 22 }^{ 1 } X_{ u } + \Gamma_{ 22 }^{ 2 } X_{ v } + cN
+    \end{cases}
+    \label{christoffel}
+.\end{equation}
+Os coeficientes \( \Gamma_{ ij }^{ k } \), os quais são funções definidas em \( U \), são chamados de \emph{símbolos de Christoffel} de \( S \) relativos à parametrização \( X \).
+Para determiná-los, vamos explorar os coeficientes da primeira forma fundamental.
+Na primeira equação, tomemos o produto interno com respeito a \( X_{ u } \) e, também, o produto interno com respeito a \( X_{ v } \), obtendo as equações
+\begin{equation*}
+    \dotprod{ X_{ uu }, X_{ u } } = E \Gamma_{ 11 }^{ 1 } + F \Gamma_{ 11 }^{ 2 }     \ \text{ e } \
+    \dotprod{ X_{ uu }, X_{ v } } = F \Gamma_{ 11 }^{ 1 } + G \Gamma_{ 11 }^{ 2 } ,\end{equation*}
+onde \( E, F \) e \( G \) são os coeficientes da primeira forma fundamental.
+Para determinar os produtos internos no lado esquerdo, diferenciamos os coeficientes da primeira forma fundamental.
+Primeiro, temos
+\begin{equation*}
+    E_{ u }
+    = \frac{ \partial }{ \partial u } \dotprod{ X_{ u }, X_{ u } }
+    = 2 \dotprod{ X_{ uu }, X_{ u } }
+,\end{equation*}
+de onde concluímos
+\begin{equation*}
+    \dotprod{ X_{ uu }, X_{ u } } = \frac{ E_{ u } }{ 2 }
+.\end{equation*}
+De maneira análoga, fazemos
+\begin{equation}
+    E_{ v }
+    = \frac{ \partial }{ \partial v } \dotprod{ X_{ u }, X_{ u } }
+    = 2 \dotprod{ X_{ uv }, X_{ u } }
+    \label{Ev}
+,\end{equation}
+bem como
+\begin{equation}
+    F_{ u }
+    = \frac{ \partial }{ \partial u } \dotprod{ X_{ u }, X_{ v } }
+    = \dotprod{ X_{ uu }, X_{ v } } + \dotprod{ X_{ u }, X_{ uv } }
+    \label{Fu}
+.\end{equation}
+Logo, multiplicando (\ref{Fu}) por \( 2 \) e substituindo (\ref{Ev}), obtemos
+\begin{equation*}
+    2 F_{ u } = 2 \dotprod{ X_{ uu }, X_{ v } } + E_{ v }
+,\end{equation*}
+de modo que
+\begin{equation*}
+    \dotprod{ X_{ uu }, X_{ v } } = F_{ u } - \frac{ E_{ v } }{ 2 }
+.\end{equation*}
+
+Dessa forma, os símbolos de Christoffel \( \Gamma_{ 11 }^{ 1 } \) e \( \Gamma_{ 11 }^{ 2 } \) satisfazem o sistema linear
+\begin{equation*}
+    \begin{cases}
+        E \Gamma_{ 11 }^{ 1 } + F \Gamma_{ 11 }^{ 2 } = \frac{ E_{ u } }{ 2 } \\
+        F \Gamma_{ 11 }^{ 1 } + G \Gamma_{ 11 }^{ 2 } = F_{ u } - \frac{ E_{ v } }{ 2 }
+    \end{cases}
+.\end{equation*}
+Como \( EG - F^2 > 0 \), a matriz de coeficientes tem determinante positivo.
+Logo, possui inversa, cujas entradas são funções de \( E, F \) e \( G \).
+Portanto, o sistema acima tem uma solução única, de modo que \( \Gamma_{ 11 }^{ 1 } \) e \( \Gamma_{ 11 }^{ 2 } \) são funções de \( E, F, G, E_{ u }, E_{ v } \) e \( F_{ u } \).
+
+Não repetiremos o mesmo processo para as outras equações, pois acreditamos ser bem claro o que deve ser feito.
+Apenas afirmamos que, após um pouco de algebrismo, pode-se concluir que \emph{todos os símbolos de Christoffel são expressos como funções dos coeficientes da primeira forma fundamental e suas derivadas de primeira ordem}.
+
+Com essa informação sobre os símbolos de Christoffel, podemos apresentar uma outra caracterização das geodésicas, em termos de equações diferenciais.
+
+\begin{prop}[Equações diferenciais das geodésicas]
+    Sejam \( S \) uma superfície regular e \( X : U \subseteq \R^{ 2 } \to S \) uma parametrização local de \( S \).
+    Se \( u, v : I \subseteq \R \to U \) são funções tais que
+    \begin{equation*}
+        \gamma ( t ) = X ( u ( t ), v ( t ) )
+    \end{equation*}
+    é uma curva diferenciável, então \( \gamma \) é uma geodésica de \( S \) se, e somente se, as funções \( u \) e \( v \) satisfazem as equações
+    \begin{equation}
+        \begin{cases}
+            u'' + ( u' )^2 \Gamma_{ 11 }^{ 1 } + 2 u'v'\Gamma_{ 12 }^{ 1 } + ( v' )^2 \Gamma_{ 22 }^{ 1 } = 0 \\
+            v'' + ( u' )^2 \Gamma_{ 11 }^{ 2 } + 2 u'v'\Gamma_{ 12 }^{ 2 } + ( v' )^2 \Gamma_{ 22 }^{ 2 } = 0
+        \end{cases}
+        \label{difeq}
+    ,\end{equation}
+    onde os símbulos de Christoffel \( \Gamma_{ ij }^{ k } \) são calculados em \( ( u ( t ), v ( t ) ) \).
+\end{prop}
+
+\begin{proof}
+    Pela regra da cadeia, temos que \( \gamma' = u' X_{ u } + v' X_{ v } \), em que \( X_{ u } = X_{ u } ( u ( t ), v ( t ) ) \) e \( X_{ v } = X_{ v } ( u ( t ), v ( t ) ) \).
+    Derivando novamente com relação a \( t \), obtemos
+    \begin{align*}
+        \gamma''
+        &= \frac{ \mathrm d }{ \mathrm d t } u' X_{ u }
+        + \frac{ \mathrm d }{ \mathrm d t } v' X_{ v } \\
+        &= u'' X_{ u } + u' \frac{ \mathrm d }{ \mathrm d t } X_{ u } + v''X_{ v } + v' \frac{ \mathrm d }{ \mathrm d t } X_{ v } \\
+        &= u'' X_{ u }  + u' \left(
+            u' X_{ uu } + v' X_{ uv }
+        \right)
+        + v'' X_{ v } + v' \left(
+            u' X_{ vu } + v' X_{ vv }
+        \right) \\
+        &= u'' X_{ u } + ( u' )^2 X_{ uu } + 2 u' v' X_{ uv } + ( v' )^2 X_{ vv } + v'' X_{ v }
+    .\end{align*}
+    Para que \( \gamma \) seja geodésica, para cada \( t \in I \) sua componente tangencial, ou seja, sua projeção em \( T_{ \gamma ( t ) } S \),  deve ser nula.
+    Seja \( \alpha ( t ) \defeq \proj_{ T_{ \gamma ( t ) } S } \gamma'' ( t ) \).
+    Utilizando as equações obtidas em (\ref{christoffel}), podemos encontrar as coordenadas de \( \alpha \) com relação à base \( \left\{ X_{ u }, X_{ v } \right\} \), obtendo, assim,
+    \begin{equation*}
+        \alpha ( t ) = A X_{ u } + B X_{ v }
+    ,\end{equation*}
+    onde
+    \begin{align*}
+        A &= u'' ( u' )^2 \Gamma_{ 11 }^{ 1 } + 2 u' v' \Gamma_{ 12 }^{ 1 } + ( v' )^2 \Gamma_{ 22 }^{ 1 } + ( v' )^2 \Gamma_{ 22 }^{ 2 } \\
+        \text{e}& \\
+        B &= v'' + ( u' )^2 \Gamma_{ 11 }^{ 2 } + 2 u' v' \Gamma_{ 12 }^{ 2 } + ( v' )^2 \Gamma_{ 22 }^{ 2 }
+    .\end{align*}
+    Com isso, concluímos que \( A = B = 0 \) e, portanto, \( \gamma \) é uma geodésica, se, e somente se, \( u \) e \( v \) satisfazem as equações (\ref{difeq}).
+\end{proof}
+
+Agora, provaremos um resultado que caracteriza o conceito de geodésica como intrínseco, por ser invariante a deformações que preservam a estrutura local da superfície.
+
+\begin{prop}[Invariância das geodésicas por isometrias locais]
+    Sejam \( S_{ 1 } \) e \( S_{ 2 } \) superfícies regulares, \( f : S_{ 1 } \to S_{ 2 } \) uma isometria local e \( \gamma : I \to S_{ 1 } \) uma curva diferenciável.
+    Então, \( \gamma \) é uma geodésica de \( S_{ 1 } \) se, e somente se, \( f \circ \gamma \) é uma geodésica de \( S_{ 2 } \).
+    \label{nao varia por isometria}
+\end{prop}
+
+\begin{proof}
+    Pela definição de geodésica, precisamos apenas mostrar que \( f \circ \gamma \) é localmente uma geodésica parametrizada.
+    Logo, restringimos nosso olhar a uma vizinhança parametrizada de \( S \), \( V = X ( U ) \), à qual é isométrica, via \( f \), ao aberto \( f ( V ) \subseteq S_{ 2 } \), e na qual supomos, sem perda de generalidade, estar contido o traço de \( \gamma \).
+    Logo, podemos escrever
+    \begin{equation*}
+        \gamma ( t ) = X ( u ( t ), v ( t ) )
+    ,\end{equation*}
+    onde \( t \in I \subseteq \R \) e \( ( u ( t ), v ( t ) ) \in U \).
+    Definindo, então, \( \sigma \defeq f \circ \gamma \) e \( Y \defeq f \circ X \), temos \( \sigma ( t ) = Y ( u ( t ), v ( t ) ) \) para todo \( t \in I \).
+    Pela Proposição \ref{conserva primeira forma}, os coeficientes da primeira forma fundamental de \( X \) coincidem com os de \( Y \).
+    Portanto, pela discussão precedente à proposição que estamos demonstrando, os símbolos de Christoffel de cada parametrização também são os mesmos.
+    Logo, as equações diferencias em (\ref{difeq}) para \( \sigma \) e \( \gamma \)coincidem, de modo que uma é geodésica se, e somente se, a outra também é.
+\end{proof}
+
+Como última proposição dessa seção, demonstramos que de fato esses objetos existem, isto é, que em toda superfície regular existem geodésicas partindo de qualquer ponto e em qualquer direção.
+Como de praxe quando estamos tratando de curvas, nos valeremos do teorema de existência e unicidade de equações diferenciais ordinárias.
+
+\begin{prop}[Existência e unicidade de geodésicas]
+    Dados um ponto \( p \) de uma superfície regular \( S \) e \( w \in T_{ p } S \) existem um intervalo aberto \( I \ni 0 \) e uma única geodésica \( \gamma : I \to S \) tal que \( \gamma ( 0 ) = p \)  e \( \gamma' ( 0 ) = w \).
+    \label{existe e unico}
+\end{prop}
+
+\begin{proof}
+    Vamos especificar nossa geodésica em temos de curvas em \( U \), isto é, vamos demonstrar a existência de funções \( u, v : I \subseteq \R \to U \) tais que a curva \( \gamma \) definida por \( \gamma ( t ) = X ( u ( t ), v ( t ) ) \) é uma geodésica com as propriedades desejadas.
+    Com esse fim, vamos identificar quais condições iniciais \( u \) e \( v \) devem satisfazer.
+    Para que tenhamos \( \gamma ( 0 ) = p \), devemos ter
+    \begin{equation}
+        ( u ( 0 ), v ( 0 ) ) = X^{ -1 } ( p ) = \vcentcolon ( u_{ 0 }, v_{ 0 } )
+        \label{valor inicial}
+    .\end{equation}
+    Além disso, veja que
+    \begin{align*}
+        \gamma' ( 0 )
+        &= \left[
+            \frac{ \mathrm d }{ \mathrm d t } X ( u ( t ), v ( t ) )  
+        \right]_{ t = 0 } \\
+        &= dX_{ ( u ( 0 ), v ( 0 ) ) } ( u' ( 0 ), v' ( 0 ) )
+    .\end{align*}
+    Portanto, supondo (\ref{valor inicial}), para termos \( \gamma' ( 0 ) = w \) devemos ter
+    \begin{equation}
+        ( u' ( 0 ), v' ( 0 ) ) = dX_{ ( u_{ 0 }, v_{ 0 } ) }^{ -1 } ( w )
+        \label{derivada inicial}
+    .\end{equation}
+    De fato, essas condições já nos garantem a existência e unicidade de \( \gamma \)!
+    Basta perceber que as equações (\ref{difeq}) são da forma
+    \begin{equation*}
+        \begin{cases}
+            u'' = f ( u, v, u', v' ) \\
+            v'' = g ( u, v, u', v' )
+        \end{cases}
+    ,\end{equation*}
+    em que \( f \) e \( g \) são funções diferenciáveis, e utilizar o teorema da existência e unicidade para soluções de equações diferenciais ordinárias.
+    Com isso, existem um único intervalo \( I \ni 0 \) e uma única solução \( ( u ( t ), v ( t ) ) \), com \( t \in I \), que cumpre (\ref{valor inicial}) e (\ref{derivada inicial}), de modo que a curva
+    \begin{equation*}
+        \gamma ( t ) = X ( u ( t ), v ( t ) )
+    ,\end{equation*}
+    onde \( t \in I \), é a única geodésica de \( S \), a qual cumpre as condições \( \gamma ( 0 ) = p \) e \( \gamma' ( 0 ) = w \).
+\end{proof}
+
+\comment{
+    equacoes diferenciais
+    existencia e unicidade
+    invariancia por isometrias locais
+    homogeneidade ?
+}
